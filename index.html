@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши моменты</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #000;
+            
+            /* НЕ ЗАБУДЬ ВЕРНУТЬ НАЗВАНИЕ КАРТИНКИ */
+            background-image: url('fon.jpg'); 
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: sans-serif;
+        }
+
+        a { transition: opacity 0.2s ease-in-out; }
+        a:hover { opacity: 0.7; }
+
+        /* Специальные классы для главной страницы */
+        .main-container {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 4%;
+            padding-top: 5%; /* Отступ сверху на компьютере */
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            max-width: 500px;
+        }
+
+        .text-card {
+            background-color: #151515;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #333;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #d96c4a;
+            color: #d96c4a;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #151515;
+        }
+
+        /* --- АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ --- */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                background-position: top center;
+            }
+            .main-container {
+                justify-content: center; /* Центрируем текст на телефоне */
+                padding-right: 5%;
+                padding-left: 5%;
+                padding-top: 65%; /* Опускаем блок под лицо на фото */
+            }
+            .content-wrapper {
+                flex-direction: column; /* Кнопка "1" аккуратно встанет под текст */
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+      <div class="content-wrapper">
+
+        <!-- Основной текст главной страницы -->
+        <div class="text-card">
+          <h2 style="color: #d96c4a; margin-top: 0; font-size: 22px;">Наши моменты</h2>
+          <p style="color: #e0e0e0; line-height: 1.6; font-size: 15px; margin-bottom: 0;">
+            Привет! мне надо тебе сразу сказать, что я давно не переписывался в интернете, и навероное не знаю как это делать теперь больше, могу отвечать как то кратко, и словами как круто, блин прикольно, и ничего больше не добавляя, это не значит, что я общаюсь как то холодно, я просто иногда не знаю как можно ответить, и могу делать такую глупость, так что я подумал, как я могу об этом сказать, и ничего лучше не придумал, чем сделать что нибудь, в таком виде, тут я буду просто оставлять наши гулянки, какие-то воспоминания, чтобы можно было зайти сюда и почитать все это) ( по скрипкту, справа от основоного текста, буду появляться квадратики, это как наши гуляночки, пока конечно их было мало, и я напишу только одну историю, но думаю, если все получится, этот сайт будет все больше и больше дополняться воспоминаниями) и в дополнение ещё скажу а может где-то и  повторюсь ( я плохо умею выражать свои эмоции, извините меня за это, хоть я и хочу сказать многое, но просто не знаю как выразить это, или может просто боюсь говорить об этом все, а может просто из-за неудачных отношений, я честно не знаю, но думаю в будущем я это пойму). Если я не буду понимать твои намеки, или ещё что нибудь, ты главное не растраивайся и знай, что я просто такой затупок)
+          </p>
+        </div>
+
+        <!-- Квадратик с кнопкой 1 -->
+        <div>
+          <a href="story1.html" class="nav-button">1</a>
+        </div>
+
+      </div>
+    </div>
+
+</body>
+</html>
