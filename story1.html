@@ -22,6 +22,7 @@
             font-family: 'Comfortaa', sans-serif;
             color: #e0e0e0;
             overflow: hidden; 
+            transition: background-image 1.5s ease-in-out;
         }
 
         /* Контейнер для текста */
@@ -134,6 +135,24 @@
     </audio>
 </div>
     </div>
-
+<script>
+    // Сюда впиши точные названия твоих фоток, которые загрузил на GitHub
+    const photos = [
+        'story1.JPG', // Твоя первая (текущая) картинка
+        'bg1.JPG',    // Вторая картинка
+        'bg2.JPG',    // Третья картинка
+        'bg3.JPG'     // Четвертая картинка
+        'bg4.JPG'
+        'bg5.JPG'
+    ];
+    
+    let currentPhoto = 0;
+    
+    // Переключаем фотки каждые 5 секунд (5000 миллисекунд)
+    setInterval(() => {
+        currentPhoto = (currentPhoto + 1) % photos.length;
+        document.body.style.backgroundImage = `url('${photos[currentPhoto]}')`;
+    }, 5000);
+</script>
 </body>
 </html>
