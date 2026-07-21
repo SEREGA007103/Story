@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши моменты</title>
+    
+    <!-- Подключаем наш красивый кругленький шрифт -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            
+            /* ВПИШИ СЮДА НАЗВАНИЕ СВОЕЙ НОВОЙ ФОТКИ */
+            background-image: url('jopa.JPG'); 
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Comfortaa', sans-serif;
+            overflow: hidden; /* Убирает лишние полосы прокрутки */
+        }
+
+        /* Стили для темной плашки под плеер (слева сверху) */
+        .top-left-player {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(21, 21, 21, 0.85); /* Темный полупрозрачный фон, как у текста */
+            padding: 10px 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .player-text {
+            color: #e0e0e0;
+            font-size: 13px;
+            margin: 0 0 8px 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Блок с плеером -->
+    <div class="top-left-player">
+        <p class="player-text">Включи для атмосферы 🎵</p>
+        
+        <!-- ВПИШИ СЮДА НАЗВАНИЕ СВОЕЙ НОВОЙ ПЕСНИ -->
+        <audio controls autoplay loop style="outline: none;">
+            <source src="jopa.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+</body>
+</html>
