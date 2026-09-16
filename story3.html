@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Особенный вечер</title>
+    <style>
+        /* --- ОСНОВНЫЕ НАСТРОЙКИ --- */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #000;
+            color: #e0e0e0;
+            font-family: sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- ВОЛШЕБНЫЙ ФОН БОКЕ --- */
+        /* Эти круги создают эффект размытых светящихся огней на фоне */
+        .bokeh {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 15s infinite alternate ease-in-out;
+        }
+        .bokeh-1 {
+            width: 300px; height: 300px;
+            background: rgba(217, 108, 74, 0.15); /* Ваш фирменный цвет */
+            top: 10%; left: 10%;
+        }
+        .bokeh-2 {
+            width: 400px; height: 400px;
+            background: rgba(217, 108, 74, 0.1);
+            bottom: 10%; right: 5%;
+            animation-duration: 20s;
+            animation-direction: alternate-reverse;
+        }
+        .bokeh-3 {
+            width: 250px; height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            top: 40%; left: 60%;
+            animation-duration: 18s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.2); }
+        }
+
+        /* --- КНОПКА НАЗАД --- */
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            padding: 0 20px;
+            border: 1px solid #d96c4a;
+            color: #d96c4a;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #151515;
+            margin: 25px;
+            transition: 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: #d96c4a;
+            color: #000;
+        }
+
+        /* --- КОНТЕЙНЕР ДЛЯ КОНТЕНТА --- */
+        .content {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- ТЕКСТОВЫЙ БЛОК --- */
+        .text-card {
+            background-color: rgba(21, 21, 21, 0.8); /* Полупрозрачный черный */
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid #333;
+            margin-bottom: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .text-card h1 {
+            color: #d96c4a;
+            margin-top: 0;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .text-card p {
+            line-height: 1.7;
+            font-size: 16px;
+            color: #ccc;
+            text-align: left;
+        }
+
+        /* --- АСИММЕТРИЧНАЯ ГАЛЕРЕЯ --- */
+        .gallery-grid {
+            display: grid;
+            /* Делим сетку на две колонки */
+            grid-template-columns: 1fr 1fr; 
+            /* Высота одной маленькой фотки (большая будет занимать две) */
+            grid-auto-rows: 250px; 
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            cursor: pointer;
+        }
+        
+        /* Делаем первую фотографию большой (на 2 строки вниз) */
+        .large-photo {
+            grid-row: span 2; 
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Идеально заполняет карточку без искажений */
+            transition: transform 0.6s ease;
+            background-color: #222; /* Заглушка, пока грузится фото */
+        }
+
+        /* --- СКРЫТЫЕ ПОДПИСИ (ЭФФЕКТ ПРИ НАВЕДЕНИИ) --- */
+        .photo-caption {
+            position: absolute;
+            bottom: -60px; /* Прячем текст внизу */
+            left: 0;
+            width: 100%;
+            padding: 30px 20px 20px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: #fff;
+            transition: all 0.4s ease;
+            opacity: 0; /* Делаем прозрачным */
+            box-sizing: border-box;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        /* Магия: что происходит, когда наводим мышку */
+        .photo-card:hover img {
+            transform: scale(1.05); /* Легкое приближение фото */
+        }
+        .photo-card:hover .photo-caption {
+            bottom: 0; /* Текст выезжает наверх */
+            opacity: 1; /* Текст становится видимым */
+        }
+
+        /* --- АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ --- */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr; /* На телефоне фотки идут в один столбец */
+                grid-auto-rows: 350px; /* Делаем их повыше на телефоне */
+            }
+            .large-photo {
+                grid-row: span 1; /* Отменяем двойную высоту для большой фотки */
+            }
+            .text-card {
+                padding: 25px 20px;
+            }
+            .text-card h1 { font-size: 26px; }
+            /* На телефоне лучше сделать подписи всегда видимыми, так как нет "наведения мышки" */
+            .photo-caption {
+                bottom: 0;
+                opacity: 1;
+                background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Размытые огни на фоне -->
+    <div class="bokeh bokeh-1"></div>
+    <div class="bokeh bokeh-2"></div>
+    <div class="bokeh bokeh-3"></div>
+
+    <a href="index.html" class="nav-button">← Назад</a>
+
+    <div class="content">
+        <!-- Текстовый блок -->
+        <div class="text-card">
+            <h1>Тот самый день</h1>
+            <p>
+                Здесь ты можешь написать еще одну небольшую историю. Например, о том, как вы просто гуляли по городу, сидели где-нибудь или смотрели фильм. В таких простых моментах часто кроется самое ценное. 
+            </p>
+            <p>
+                Этот дизайн специально сделан более "спокойным" и современным. Он идеально подходит для теплых слов и любимых фотографий.
+            </p>
+        </div>
+
+        <!-- Сетка с фотографиями -->
+        <div class="gallery-grid">
+            
+            <!-- ФОТО 1 (Большое слева) -->
+            <div class="photo-card large-photo">
+                <!-- ВНИМАНИЕ: Проверь название и формат файла! :) -->
+                <img src="pitervmeste.jpg" alt="Главное фото">
+                <div class="photo-caption">Как же круто мы тогда провели время.🔥</div>
+            </div>
+
+            <!-- ФОТО 2 (Справа сверху) -->
+            <div class="photo-card">
+                <img src="piter1.jpg" alt="Фото сверху">
+                <div class="photo-caption">Столб, что может упасть в любой момент)</div>
+            </div>
+
+            <!-- ФОТО 3 (Справа снизу) -->
+            <div class="photo-card">
+                <img src="piter2.jpg" alt="Фото снизу">
+                <div class="photo-caption">Красота Питера </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
