@@ -239,5 +239,51 @@
   
     </audio>
 </div>
+    <div class="gallery-with-audio">
+  <!-- Фотографии -->
+  <div class="photos-container">
+    <img src="photo1.jpg" alt="Фото 1" style="max-width: 100%; height: auto;">
+    <img src="photo2.jpg" alt="Фото 2" style="max-width: 100%; height: auto;">
+    <img src="photo3.jpg" alt="Фото 3" style="max-width: 100%; height: auto;">
+  </div>
+
+  <!-- Плеер ровно под фото, по центру -->
+  <div class="audio-wrapper">
+    <p class="player-text">Включи для атмосферы 🎵</p>
+    <audio controls loop style="outline: none; width: 100%;">
+      <source src="music/ambience.mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудио.
+    </audio>
+  </div>
+</div>
+
+<style>
+  .gallery-with-audio {
+    max-width: 800px;
+    margin: 0 auto; /* центрирует весь блок на странице */
+    font-family: Arial, sans-serif;
+  }
+  .photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* фото будут по центру */
+    gap: 12px;
+  }
+  .photos-container img {
+    flex: 1 1 200px; /* адаптивная ширина, не больше 200px, но может сжиматься */
+  }
+  .audio-wrapper {
+    text-align: center;
+    margin-top: 24px;
+    padding: 16px;
+    background: #f5f5f5;
+    border-radius: 8px;
+  }
+  .player-text {
+    margin: 0 0 12px 0;
+    color: #333;
+  }
+</style>
+
 </body>
 </html>
